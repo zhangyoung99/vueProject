@@ -22,9 +22,9 @@ const router = new Router({
         },
         {
           path: "/user/login",
-          name: "login"
-          // component: () =>
-          //   import(/* webpackChunkName: "user" */ "./views/User/login")
+          name: "login",
+          component: () =>
+            import(/* webpackChunkName: "user" */ "./views/User/login")
         },
         {
           path: "/user/register",

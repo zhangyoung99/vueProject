@@ -1,5 +1,5 @@
 <template>
-    <div>header</div>
+    <div class="header">header</div>
 </template>
 
 <script>
@@ -9,5 +9,7 @@ export default {
 </script>
 
 <style>
-
+.header {
+    float: right;
+}
 </style>

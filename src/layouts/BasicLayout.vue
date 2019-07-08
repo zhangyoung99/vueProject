@@ -1,13 +1,15 @@
 <template>
-<div class="layout">
+<div class="layout" :class="[`nav-theme-${navTheme}`, `nav-layout-${navLayout}`]">
     <a-layout id="components-layout-custom-trigger" style="min-height: 100vh">
         <a-layout-sider
         :trigger="null"
+        :theme="navTheme"
         collapsible
         v-model="collapsed"
+        width="256px"
         >
             <div class="logo">Ant Design Vue Pro</div>
-            <SideMenu />
+            <SideMenu :theme="navTheme" />
         </a-layout-sider>
         <a-layout>
             <a-layout-header style="background: #fff; padding: 0">
@@ -44,6 +46,14 @@ export default {
             collapsed: false
         }
     },
+    computed: {
+        navTheme() {
+            return this.$route.query.navTheme || 'dark';
+        },
+        navLayout() {
+            return this.$route.query.navLayout || 'left';
+        }
+    },
     components: {
         Header,
         SideMenu,
@@ -54,7 +64,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style scoped>
 .trigger {
     padding: 0 20px;
     line-height: 64px;
@@ -62,6 +72,15 @@ export default {
 }
 .trigger:hover {
     color: #1890ff;
+}
+.logo {
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    overflow: hidden;
+}
+.nav-theme-dark >>> .logo {
+  color: #ffffff;
 }
 </style>
 

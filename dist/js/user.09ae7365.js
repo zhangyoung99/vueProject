@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["user"],{"812b":function(e,n,t){"use strict";t.r(n);var l=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",[e._v("登录")])},u=[],r={},c=r,s=t("2877"),a=Object(s["a"])(c,l,u,!1,null,null,null);n["default"]=a.exports},"8d6d":function(e,n,t){"use strict";t.r(n);var l=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",[e._v("注册")])},u=[],r={},c=r,s=t("2877"),a=Object(s["a"])(c,l,u,!1,null,null,null);n["default"]=a.exports}}]);
+//# sourceMappingURL=user.09ae7365.js.map

@@ -29,7 +29,9 @@
             </a-layout-footer>
         </a-layout>
     </a-layout>
-    <SettingDrawer />
+    <Authorized :authority="['admin']">
+        <SettingDrawer />
+    </Authorized>
 </div>
     
 </template>
@@ -38,7 +40,7 @@
 import Header from "./header.vue";
 import SideMenu from "./sideMenu.vue";
 import Footer from "./footer.vue";
-import SettingDrawer from "../components/SettingDrawer"
+import SettingDrawer from "../components/SettingDrawer";
 
 export default {
     data(){

@@ -28,6 +28,7 @@
  * SubMenu1.vue https://github.com/vueComponent/ant-design-vue/blob/master/components/menu/demo/SubMenu1.vue
  * */
 import SubMenu from './SubMenu'
+import { check } from '../utils/auth'
 export default {
   props: {
         theme: {
@@ -61,28 +62,32 @@ export default {
     },
     getMenuData (routes= [],parentKeys = [], selectedKey) {
         const menuData = [];
-        routes.forEach(item => {
-            // console.log(item);
-            if (item.name && !item.hideInMenu) {
-                console.log(newItem);
-                this.openKeysMap[item.path] = parentKeys;
-                this.selectedKeysMap[item.path] = [selectedKey || item.path];
-                const newItem = { ...item };
-                delete newItem.children;
-                if(item.children && !item.hideChildrenInMenu) {
-                    newItem.children = this.getMenuData(item.children, [...parentKeys, item.path])
-                } else {
-                    this.getMenuData(
-                      item.children,
-                      selectedKey ? parentKeys : [...parentKeys, item.path],
-                      selectedKey || item.path
-                    );
-                }
-                menuData.push(newItem)
-            } else if(!item.hideInMenu && !item.hideChildrenInMenu && item.children) {
-                menuData.push(...this.getMenuData(item.children, [...parentKeys, item.path]))
-            }
-        });
+        for (let item of routes) {
+          if (item.meta && item.meta.authority && !check(item.meta.authority)) {
+            break;
+          }
+          // console.log(item);
+          if (item.name && !item.hideInMenu) {
+              // console.log(newItem);
+              this.openKeysMap[item.path] = parentKeys;
+              this.selectedKeysMap[item.path] = [selectedKey || item.path];
+              const newItem = { ...item };
+              delete newItem.children;
+              if(item.children && !item.hideChildrenInMenu) {
+                  newItem.children = this.getMenuData(item.children, [...parentKeys, item.path])
+              } else {
+                  this.getMenuData(
+                    item.children,
+                    selectedKey ? parentKeys : [...parentKeys, item.path],
+                    selectedKey || item.path
+                  );
+              }
+              menuData.push(newItem)
+          } else if(!item.hideInMenu && !item.hideChildrenInMenu && item.children) {
+              menuData.push(...this.getMenuData(item.children, [...parentKeys, item.path]))
+          }
+        }
+
         return menuData;
     }
   },

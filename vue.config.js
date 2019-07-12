@@ -21,11 +21,11 @@ module.exports = {
               .join("_");
             const mock = require(`./mock/${name}`);
             const result = mock(req.method);
-            // delete require.cache[require.resolve(`./mock/${name}`)];
+            delete require.cache[require.resolve(`./mock/${name}`)];
             return res.send(result);
           }
         }
       }
     }
   }
-}
+};

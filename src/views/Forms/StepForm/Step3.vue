@@ -1,5 +1,5 @@
 <template>
-    <div>第三步</div>
+    <div>付款成功，预计2小时到账</div>
 </template>
 
 <script>

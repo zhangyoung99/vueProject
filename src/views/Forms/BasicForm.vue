@@ -25,20 +25,22 @@
         label="Field A"
         :label-col="formItemLayout.labelCol"
         :wrapper-col="formItemLayout.wrapperCol"
+        :validateStatus="fieldAStatus"
+        :help="helpAStatus"
       >
-        <a-input placeholder="input placeholder" />
+        <a-input v-model="fieldA" placeholder="input placeholder" />
       </a-form-item>
       <a-form-item
         label="Field B"
         :label-col="formItemLayout.labelCol"
         :wrapper-col="formItemLayout.wrapperCol"
       >
-        <a-input placeholder="input placeholder" />
+        <a-input v-model="fieldB" placeholder="input placeholder" />
       </a-form-item>
       <a-form-item
         :wrapper-col="buttonItemLayout.wrapperCol"
       >
-        <a-button type="primary">
+        <a-button type="primary" @click="handleSubmit">
           Submit
         </a-button>
       </a-form-item>
@@ -51,7 +53,22 @@ export default {
   data () {
     return {
       formLayout: 'horizontal',
+      fieldA: '',
+      fieldB: '',
+      fieldAStatus:'',
+      helpAStatus: ''
     };
+  },
+  watch: {
+      fieldA(val) {
+          if(val.length <= 5) {
+              this.fieldAStatus = "error"
+              this.helpAStatus = "必须大于5个字符"
+          } else {
+            this.fieldAStatus = ""
+            this.helpAStatus = ""
+          }
+      }
   },
   computed: {
     formItemLayout () {
@@ -72,6 +89,17 @@ export default {
     handleFormLayoutChange  (e) {
       this.formLayout = e.target.value;
     },
+    handleSubmit() {
+        if(this.fieldA.length <= 5) {
+              this.fieldAStatus = "error"
+              this.helpAStatus = "必须大于5个字符"
+          } else {
+              console.log({
+                  fieldA: this.fieldA,
+                  fieldB: this.fieldB
+              })
+          }
+    }
   },
 };
 </script>

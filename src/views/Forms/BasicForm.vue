@@ -29,8 +29,8 @@
         <a-input v-decorator="[
          'fieldA',
          {
-             initValue: fieldA,
-             rules: [{require: true, min: 6, message: '必须大于6个字符'}]
+            initValue: fieldA,
+            rules: [{require: true, min: 6, message: '必须大于6个字符'}]
          }
         ]" placeholder="input placeholder" />
       </a-form-item>

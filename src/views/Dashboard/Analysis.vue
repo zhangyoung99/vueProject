@@ -3,8 +3,7 @@
 </template>
 
 <script>
-// import axios from "axios";
-import request from "../../utils/request"
+import request from "../../utils/request";
 import Chart from "../../components/Chart";
 export default {
     data() {

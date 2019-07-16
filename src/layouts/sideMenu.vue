@@ -31,10 +31,10 @@ import SubMenu from './SubMenu'
 import { check } from '../utils/auth'
 export default {
   props: {
-        theme: {
-            type: String,
-            defalult: "dark"
-        }
+    theme: {
+      type: String,
+      default: "dark"
+    }
   },
   components: {
     'sub-menu': SubMenu,

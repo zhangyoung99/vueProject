@@ -3,7 +3,8 @@
 </template>
 
 <script>
-import request from "../../utils/request";
+import axios from "axios";
+// import request from "../../utils/request";
 import Chart from "../../components/Chart";
 export default {
     data() {
@@ -22,12 +23,14 @@ export default {
     },
     methods: {
         getChartData() {
-            request({
-                url: "/api/dashboard/chart",
-                method: "get",
-                params: { ID: 12345}
-            })
-            .then(response => {
+            // request({
+            //     url: "/api/dashboard/chart",
+            //     method: "get",
+            //     params: { ID: 12345}
+            // })
+            axios
+              .get('/api/dashboard/chart', { params:{ ID: 12345 }})
+              .then(response => {
                 this.chartOption = {
                     title: {
                         text: 'ECharts 入门示例'
@@ -51,7 +54,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>

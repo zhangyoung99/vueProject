@@ -1,10 +1,15 @@
 <template>
-    <Chart :option="chartOption" style="height: 500px" />
+<div>
+    <Nut  style="height: 100px"/>
+    <Chart :option="chartOption" style="height: 300px" />
+</div>
+
 </template>
 
 <script>
 import axios from "axios";
 // import request from "../../utils/request";
+import Nut from "../../components/doughnutChart";
 import Chart from "../../components/Chart";
 export default {
     data() {
@@ -13,7 +18,8 @@ export default {
         }
     },
     components: {
-        Chart
+        Chart,
+        Nut
     },
     mounted() {
         this.getChartData();
